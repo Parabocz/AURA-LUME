@@ -1,13 +1,13 @@
 // Lenis Smooth Scroll Setup
 const lenis = new Lenis({
-    duration: 1.8,
+    duration: 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     direction: 'vertical',
     gestureDirection: 'vertical',
     smooth: true,
     mouseMultiplier: 1,
-    smoothTouch: true,
-    touchMultiplier: 1.5,
+    smoothTouch: false,
+    touchMultiplier: 2,
     infinite: false,
 })
 
@@ -138,12 +138,10 @@ if (gallerySection && galleryContent) {
     ScrollTrigger.create({
         trigger: gallerySection,
         start: "top top",
-        // No mobile (<=768px), multiplicamos a distância de rolagem vertical necessária por 2.5
-        // Isso faz com que o usuário precise rolar mais o dedo para avançar, diminuindo a sensibilidade.
-        end: () => `+=${(getScrollAmount() * -1) * (window.innerWidth <= 768 ? 2.5 : 1)}`,
+        end: () => `+=${getScrollAmount() * -1}`,
         pin: true,
         animation: tween,
-        scrub: 1.5, // scrub maior (1.5s) aumenta a inércia/suavidade do movimento
+        scrub: 1,
         invalidateOnRefresh: true
     });
 }
