@@ -36,7 +36,6 @@ a, button {
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: screen;
-    transform: translate(-50%, -50%);
     opacity: 0.9;
 }
 
@@ -482,6 +481,14 @@ h1, h2, h3 {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .cursor-aura {
+        display: none !important;
+    }
+    
+    body, a, button {
+        cursor: auto !important;
+    }
+
     .headline-huge {
         font-size: clamp(2rem, 10vw, 4rem);
     }

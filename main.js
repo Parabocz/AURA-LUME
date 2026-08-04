@@ -30,14 +30,18 @@ gsap.ticker.lagSmoothing(0)
 // 1. Mouse Tracker Aura
 const cursorAura = document.querySelector('.cursor-aura');
 
-// GSAP quickTo is optimized for mouse following
-const xTo = gsap.quickTo(cursorAura, "x", {duration: 0.6, ease: "power3"});
-const yTo = gsap.quickTo(cursorAura, "y", {duration: 0.6, ease: "power3"});
+if (cursorAura && typeof gsap !== 'undefined') {
+    // Center via GSAP to avoid overriding CSS transform
+    gsap.set(cursorAura, { xPercent: -50, yPercent: -50 });
 
-window.addEventListener("mousemove", (e) => {
-    xTo(e.clientX);
-    yTo(e.clientY);
-});
+    const xTo = gsap.quickTo(cursorAura, "x", {duration: 0.6, ease: "power3"});
+    const yTo = gsap.quickTo(cursorAura, "y", {duration: 0.6, ease: "power3"});
+
+    window.addEventListener("mousemove", (e) => {
+        xTo(e.clientX);
+        yTo(e.clientY);
+    });
+}
 
 // 3. Before/After Interactive (Clip-Path)
 const compareContainer = document.querySelector('.compare-container');
