@@ -474,9 +474,15 @@ h1, h2, h3 {
 }
 
 .footer-signature {
-    font-size: 12px;
-    opacity: 0.5;
+    font-size: 14px;
     font-weight: 300;
+    opacity: 0.5;
+}
+
+/* Animations */
+.reveal-up {
+    opacity: 0;
+    transform: translateY(60px);
 }
 
 /* Responsive */

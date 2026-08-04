@@ -147,3 +147,18 @@ if (gallerySection && galleryContent) {
         invalidateOnRefresh: true
     });
 }
+
+// 5. Entrance Animations (Reveal Up)
+gsap.utils.toArray('.reveal-up').forEach((element) => {
+    gsap.to(element, {
+        scrollTrigger: {
+            trigger: element,
+            start: "top 85%", // Dispara quando elemento cruza 85% da viewport
+            once: true // Anima apenas uma vez (comportamento de luxo)
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "power3.out"
+    });
+});
