@@ -138,10 +138,12 @@ if (gallerySection && galleryContent) {
     ScrollTrigger.create({
         trigger: gallerySection,
         start: "top top",
-        end: () => `+=${getScrollAmount() * -1}`,
+        // No mobile (<=768px), multiplicamos a distância de rolagem vertical necessária por 2.5
+        // Isso faz com que o usuário precise rolar mais o dedo para avançar, diminuindo a sensibilidade.
+        end: () => `+=${(getScrollAmount() * -1) * (window.innerWidth <= 768 ? 2.5 : 1)}`,
         pin: true,
         animation: tween,
-        scrub: 1,
+        scrub: 1.5, // scrub maior (1.5s) aumenta a inércia/suavidade do movimento
         invalidateOnRefresh: true
     });
 }
